@@ -30,7 +30,7 @@ function updateGuessesDisplay(){
 function iterateGuessesVariable(){
     guessesNum++;
 }
-//set exposed if guesses zero, Splice exposed and concat, update exposed display
+//set exposed to all underscores if guesses zero, Splice exposed and concat, update exposed display
 function setExposedIfGuessesNumEqualsZero(){
     //only does this the first time round
     if(guessesNum == 0){
@@ -47,14 +47,15 @@ function updateExposedDisplay(){
     document.getElementById("exposed").innerHTML = exposed;
 }
 
+// This function uses splice and concat in combo with the indexOf return in order to selectively add letters to the display through a variable called expose
+// it also has a while loop that makes sure it gets all instances of a userGuess letter
 function spliceExposedAndConcat(){
     
-//this allows us to work with the index value in our splice steps
-currentIndex = word.indexOf(userGuess);
+    //this allows us to work with the index value in our splice steps
+    currentIndex = word.indexOf(userGuess);
 
     if(currentIndex >=0){
         while (currentIndex >=0){
-            // console.log("inside while loop:"+ currentIndex)
             //this allows us to not error handle in the concat step
             var firstHalf = "";
             var secondHalf = "";
@@ -71,16 +72,7 @@ currentIndex = word.indexOf(userGuess);
             updateExposedDisplay();
             // iterate the current Index
             currentIndex = word.indexOf(userGuess, (currentIndex+1));
-
-            //print a bunch of stuff to check the variables during operation
-            // console.log("start of slice");
-            // console.log("word " +word);
-            // console.log("exposed "+exposed)
-            console.log("firstHalf " +firstHalf);
-            console.log("secondHalf "+secondHalf);
-            console.log("exposed "+exposed);
         }
-
     // if index >= 0, then we can iterate counters here as well
     }else{
         //we can assume that index == -1 and the guess was wrong, and iterate the counter
@@ -101,14 +93,13 @@ function alertFailSucceed(){
     }
 }
 
-// start of event listener for key up
+
+
+
+// start of actual script and setup for event listener for key up
+
 randomWordChooser();
 setExposedIfGuessesNumEqualsZero();
-//word set to 'start' for troubleshooting
-// word = "start"
-// exposed = "_____"
-console.log(word);
-console.log(exposed);
 
 document.onkeyup = function (GameStep){
     //one guess per letter assertion
@@ -124,6 +115,6 @@ document.onkeyup = function (GameStep){
 
     }
     else{
-        //do nothing
+        //do nothing and wait
     }
 };
