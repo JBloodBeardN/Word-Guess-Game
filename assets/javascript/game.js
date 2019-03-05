@@ -4,7 +4,7 @@ var guesses = "";
 var guessesNum = 0;
 var incorrectGuessesNum= 0;
 var exposed; 
-var wordList = ["primary", "secondary", "tertiary"];
+var wordList = ["decompression","regulator","bouyancy", "refraction", "rebreather", "atmosphere"];
 var userGuess;
 var currentIndex;
 var winCount = 0;
