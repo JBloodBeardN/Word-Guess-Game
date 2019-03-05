@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="assets/javascript/game.js"></script>
-    <link href="css/reset.css" type="text/css" rel="stylesheet">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <!-- <link href="css/reset.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet"> -->
     <title>Document</title>
 </head>
-<body>
-    
+<body onload="updateExposedDisplay();">
+
+    <h2>Press any key to get started! </h2>
+
+    <p id="guesses">something</p>
+    <p id="incorrectGuesses">somethingIncorrect</p>
+    <hr>
+    <p> Guess Word: <span id="exposed" style="letter-spacing: 0.5em"></span></p>
 </body>
 </html>

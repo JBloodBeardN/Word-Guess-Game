@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<h2 id="questionPlaceholder"> </h2>
+
+<script>
+var winCount;
+
+var questionSet = [
+    QuestionOne = {
+    question: "The Republic of Texas gained it’s independence from Mexico in 1836",
+    answer: true
+    },
+    QuestionTwo ={
+    question: "The definition of Plucky is: Brave and courageous",
+    answer: true,
+}
+];
+
+console.log(questionSet);
+console.log(questionSet[0].question);
+
+
+questionSet.forEach(function(element){
+    document.writeln("<p>" + element.question + "<p>");
+
+    document.onkeyup = function(event){
+        var keyPressed = event.key;
+        
+        if(keyPressed === "t"){
+            let answer = true;
+            if(answer === element.answer){
+                winCount++;
+                alert("You guessed right. Your win count is"+winCount);
+            } else {
+                alert("You guessed wrong.");
+            }
+        }
+    }
+    
+
+
+});
+        
+</script>
+    
+</body>
+</html>
