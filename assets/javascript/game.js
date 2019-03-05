@@ -1,12 +1,14 @@
 //global variables
 var word;
-var guesses = [];
+var guesses = "";
 var guessesNum = 0;
 var incorrectGuessesNum= 0;
 var exposed; 
 var wordList = ["primary", "secondary", "tertiary"];
 var userGuess;
 var currentIndex;
+var winCount = 0;
+var lossCount = 0;
 
 
 //all of my functions
@@ -20,7 +22,8 @@ function randomWordChooser(){
 
 //tracks the guesses
 function pushToGuessesArray(userGuess){
-    guesses.push(userGuess);
+    guesses = guesses+userGuess+" ";
+    guesses = guesses.toUpperCase();
 }
 
 function updateGuessesDisplay(){
@@ -82,16 +85,40 @@ function spliceExposedAndConcat(){
 
 //update incorrect guesses- done above in same index>=0 check, update incorrectGuesses display, alert fail or succeed
 function updateIncorrectGuessesDisplay(){
-    document.getElementById("incorrectGuesses").innerHTML = "Incorrect Guesses:" + incorrectGuessesNum;
+    document.getElementById("incorrectGuesses").innerHTML = "Incorrect Guesses:" + incorrectGuessesNum +" /10";
+}
+
+function reset(){
+    //reset word
+    randomWordChooser();
+    //reset counters
+    guesses = " ";
+    guessesNum = 0;
+    incorrectGuessesNum = 0;
+    updateGuessesDisplay();
+    updateIncorrectGuessesDisplay();
+    document.getElementById("winCounter").innerHTML = "Wins: "+winCount;
+    document.getElementById("lossCounter").innerHTML = "Losses: "+lossCount;
+    //reset display of word to user
+    setExposedIfGuessesNumEqualsZero();
+    updateExposedDisplay();
 }
 
 function alertFailSucceed(){
     if (word === exposed){
-        alert("You Win!!");
+        winCount++;
+        reset();
+        document.getElementById("audioSource").setAttribute("src","https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/video-and-audio-content/viper.mp3")
+        alert("You Win!! ..also there is an attribute added to the <audio> tag in the DOM element for a sound file that is 'provided' by Mozilla on their page for the <audio>, but I could not get any filepath to it to work.. so inspect the DOM? please?");
+        
     } else if (incorrectGuessesNum === 10){
+        lossCount++;
+        reset();    
         alert("You Failed. Better Luck Next Time.")
+        
     }
 }
+
 
 
 

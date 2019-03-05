@@ -5,17 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="assets/javascript/game.js"></script>
-    <!-- <link href="css/reset.css" type="text/css" rel="stylesheet">
-    <link href="css/style.css" type="text/css" rel="stylesheet"> -->
+    <link href="assets/css/reset.css" type="text/css" rel="stylesheet">
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body onload="updateExposedDisplay();">
+    <audio>
+        <source id="audioSource" type="mp3">
+      </audio>
 
-    <h2>Press any key to get started! </h2>
-
-    <p id="guesses">something</p>
-    <p id="incorrectGuesses">somethingIncorrect</p>
+    <h1>SCUBA Word Guess</h1>
     <hr>
-    <p> Guess Word: <span id="exposed" style="letter-spacing: 0.5em"></span></p>
+    <h2>Press any key to get started! </h2>
+    <br>
+    <br>
+    <div id="floatRightDesktop">
+    <p id="winCounter">Wins: 0</p>
+    <p id="lossCounter">Losses: 0</p>
+    <p id="guesses">Guesses: 0</p>
+    <p id="incorrectGuesses">Incorrect Guesses:  0/10</p>
+    <p class="inlineDesktop"> Guess Word:</p> <p class="inlineDesktop" id="exposed" style="letter-spacing: 0.5em"></p>
+    </div>
 </body>
 </html>
